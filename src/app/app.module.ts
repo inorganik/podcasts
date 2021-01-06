@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.prod';
+import { DocComponent } from './doc/doc.component';
+import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { environment } from 'src/environments/environment.prod';
     HomeComponent,
     AboutComponent,
     CollectionGroupComponent,
+    CollectionComponent,
+    DocComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

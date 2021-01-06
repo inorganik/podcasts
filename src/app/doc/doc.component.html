@@ -1,6 +1,6 @@
 <div *ngIf="page$ | async as page">
   <h1>{{ page.title }}</h1>
-  <p>Retrieved via afs.collectionGroup()</p>
+  <p>Retrieved via afs.doc()</p>
   <p>Hosted by: {{ page.host }}</p>
   <p><a routerLink="/">Home</a></p>
   <img [src]="page.artUrl600" />
