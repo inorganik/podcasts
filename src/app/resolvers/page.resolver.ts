@@ -4,8 +4,6 @@ import {
   Resolve,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/internal/operators/first';
 import { map } from 'rxjs/internal/operators/map';
 import { PodcastPage } from '../models';
 
@@ -25,6 +23,9 @@ export class PageResolver implements Resolve<any> {
     ).get().pipe(
       map(query => query.docs[0].data()),
     ).toPromise();
+
+    // this way has the same result:
+    //
     // .valueChanges().pipe(
     //   map(pages => (pages.length) ? pages[0] : undefined),
     //   first()
