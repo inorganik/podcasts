@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { CollectionGroupComponent } from './collection-group/collection-group.component';
 import { HomeComponent } from './home/home.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
