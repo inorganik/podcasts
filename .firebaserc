@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "podfan-staging": {
+      "hosting": {
+        "podcasts11": [
+          "podfan-staging"
+        ]
+      }
+    }
+  }
+}
