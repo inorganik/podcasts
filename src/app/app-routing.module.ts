@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { CollectionGroupComponent } from './collection-group/collection-group.component';
 import { HomeComponent } from './home/home.component';
-import { PageResolver } from './resolvers/page.resolver';
 
 const routes: Routes = [
   {
@@ -17,9 +16,6 @@ const routes: Routes = [
   {
     path: 'collection-group/:slug',
     component: CollectionGroupComponent,
-    resolve: {
-      page: PageResolver
-    }
   }
 ];
 

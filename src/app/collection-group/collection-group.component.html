@@ -1,5 +1,6 @@
-
+<div *ngIf="page$ | async as page">
   <h1>{{ page.title }}</h1>
   <p>Hosted by: {{ page.host }}</p>
   <p><a routerLink="/">Home</a></p>
   <img [src]="page.artUrl600" />
+</div>

@@ -13,28 +13,28 @@ import { SeoService } from '../services/seo.service';
 })
 export class CollectionGroupComponent implements OnInit {
 
-  page: PodcastPage
+  page$: Observable<PodcastPage>;
 
   constructor(
     private route: ActivatedRoute,
+    private afs: AngularFirestore,
+    private seo: SeoService
   ) { }
 
   ngOnInit(): void {
-    console.log('resolved data', this.route.snapshot.data.title);
-    this.page = this.route.snapshot.data.page;
-    // this.page$ = this.route.params.pipe(
-    //   switchMap(params =>
-    //     this.afs.collectionGroup<PodcastPage>('pages', ref =>
-    //       ref.where('slug', '==', params.slug)
-    //     ).valueChanges().pipe(
-    //       tap(result => console.log('got result', result[0].title)), 
-    //       take(1)
-    //     )
-    //   ),
-    //   map(pages => (pages.length) ? pages[0] : undefined),
-    //   tap(page => this.seo.generatePodcastTags(page)),
-    //   take(1)
-    // );
+    this.page$ = this.route.params.pipe(
+      switchMap(params =>
+        this.afs.collectionGroup<PodcastPage>('pages', ref =>
+          ref.where('slug', '==', params.slug)
+        ).valueChanges().pipe(
+          tap(result => console.log('got result', result[0].title)), 
+          take(1)
+        )
+      ),
+      map(pages => (pages.length) ? pages[0] : undefined),
+      tap(page => this.seo.generatePodcastTags(page)),
+      take(1)
+    );
   }
 
 }
