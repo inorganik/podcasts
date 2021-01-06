@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment.prod';
     CollectionGroupComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
