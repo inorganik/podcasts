@@ -13,7 +13,7 @@ import { SeoService } from '../services/seo.service';
 })
 export class CollectionGroupComponent implements OnInit {
 
-  page$: Observable<PodcastPage>;
+  page$: Observable<PodcastPage[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,19 +22,10 @@ export class CollectionGroupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.page$ = this.route.params.pipe(
-      switchMap(params =>
-        this.afs.collectionGroup<PodcastPage>('pages', ref =>
-          ref.where('slug', '==', params.slug)
-        ).valueChanges().pipe(
-          tap(result => console.log('got result', result[0].title)), 
-          take(1)
-        )
-      ),
-      map(pages => (pages.length) ? pages[0] : undefined),
-      tap(page => this.seo.generatePodcastTags(page)),
-      take(1)
-    );
+    const slug = 'mixes'; // hardcoded because I can't use pipe
+    this.page$ = this.afs.collectionGroup<PodcastPage>('pages', ref =>
+      ref.where('slug', '==', slug)
+    ).valueChanges()
   }
 
 }
