@@ -1,16 +1,13 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "dist/podcasts11/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+      { "source": "**", "function": "universal" }
     ]
   },
   "functions": {
