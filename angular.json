@@ -132,9 +132,7 @@
             "outputPath": "dist/podcasts11/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
-            "externalDependencies": [
-              "@firebase/firestore"
-            ]
+            "externalDependencies": []
           },
           "configurations": {
             "production": {
