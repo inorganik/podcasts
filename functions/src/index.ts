@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-// import * as path from 'path';
+import * as path from 'path';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -9,9 +9,9 @@ import * as functions from 'firebase-functions';
 //   response.send("Hello from Firebase!");
 // });
 
-export const universal = functions.https.onRequest((request, response) => {
-  require(`${process.cwd()}/dist/podcasts11/server/main`).app(request, response);
-});
+// export const universal = functions.https.onRequest((request, response) => {
+//   require(`${process.cwd()}/dist/podcasts11/server/main`).app(request, response);
+// });
 
-// const ssr = require(path.resolve(__dirname, '../dist/podcasts11/server/main')).app();
-// export const universal = functions.https.onRequest(ssr);
+const ssr = require(path.resolve(__dirname, '../dist/podcasts11/server/main')).app();
+export const universal = functions.https.onRequest(ssr);
