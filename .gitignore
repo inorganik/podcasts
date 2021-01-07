@@ -4,8 +4,10 @@
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
-/bazel-out
+/public/*
+/functions/lib
+/functions/dist
+
 
 # dependencies
 /node_modules

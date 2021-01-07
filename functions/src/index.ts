@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+// import * as path from 'path';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -9,6 +10,8 @@ import * as functions from 'firebase-functions';
 // });
 
 export const universal = functions.https.onRequest((request, response) => {
-  console.log('call firebase ssr', process.cwd());
   require(`${process.cwd()}/dist/podcasts11/server/main`).app(request, response);
 });
+
+// const ssr = require(path.resolve(__dirname, '../dist/podcasts11/server/main')).app();
+// export const universal = functions.https.onRequest(ssr);

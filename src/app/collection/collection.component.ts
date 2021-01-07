@@ -23,18 +23,14 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.page$ = this.route.params.pipe(
-      switchMap(params => {
-        const path = 'users/HODoi0MWLMNTUzON90aRukCvWur2/pages'
+      switchMap((params) => {
+        const path = 'users/HODoi0MWLMNTUzON90aRukCvWur2/pages';
         return this.afs.collection<PodcastPage>(path, ref =>
           ref.where('slug', '==', params.slug)
-        ).valueChanges().pipe(
-          tap(result => console.log('got result', result[0].title)), 
-          take(1)
-        )
+        ).valueChanges();
       }),
       map(pages => (pages.length) ? pages[0] : undefined),
       tap(page => this.seo.generatePodcastTags(page)),
-      take(1)
     );
   }
 
