@@ -27,13 +27,12 @@ export class CollectionGroupComponent implements OnInit {
         this.afs.collectionGroup<PodcastPage>('pages', ref =>
           ref.where('slug', '==', params.slug)
         ).valueChanges().pipe(
-          tap(result => console.log('got result', result[0].title)), 
-          take(1)
         )
       ),
       map(pages => (pages.length) ? pages[0] : undefined),
+      tap(result => console.log('got result', result.title)), 
       tap(page => this.seo.generatePodcastTags(page)),
-      take(1)
+      take(2)
     );
   }
 
