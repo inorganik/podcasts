@@ -1,33 +1,19 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import {
-  Resolve,
-  ActivatedRouteSnapshot
-} from '@angular/router';
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/internal/operators/first';
-import { map } from 'rxjs/internal/operators/map';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { PageService } from '../services/page.service';
+import { first } from 'rxjs/operators';
 import { PodcastPage } from '../models';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PageResolver implements Resolve<any> {
+@Injectable()
+export class PageResolver implements Resolve<Observable<PodcastPage>> {
 
-  constructor(
-    private afs: AngularFirestore,
-  ) {}
+  constructor(private pageService: PageService) { }
 
-  resolve(route: ActivatedRouteSnapshot): any {
+  resolve(route: ActivatedRouteSnapshot): Observable<PodcastPage> {
     const slug = route.paramMap.get('slug');
-    return this.afs.collectionGroup<PodcastPage>('pages', ref =>
-      ref.where('slug', '==', slug)
-    ).get().pipe(
-      map(query => query.docs[0].data()),
-    ).toPromise();
-    // .valueChanges().pipe(
-    //   map(pages => (pages.length) ? pages[0] : undefined),
-    //   first()
-    // )
+    return this.pageService.page(slug).pipe(
+      first()
+    );
   }
 }

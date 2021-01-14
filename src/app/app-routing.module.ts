@@ -5,6 +5,8 @@ import { CollectionGroupComponent } from './collection-group/collection-group.co
 import { CollectionComponent } from './collection/collection.component';
 import { DocComponent } from './doc/doc.component';
 import { HomeComponent } from './home/home.component';
+import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.component';
+import { PageResolver } from './resolvers/page.resolver';
 
 const routes: Routes = [
   {
@@ -20,12 +22,17 @@ const routes: Routes = [
     component: DocComponent,
   },
   {
+    path: 'collection/:slug',
+    component: CollectionComponent,
+  },
+  {
     path: 'collection-group/:slug',
     component: CollectionGroupComponent,
   },
   {
-    path: 'collection/:slug',
-    component: CollectionComponent,
+    path: 'resolver/:slug',
+    component: PageViaResolverComponent,
+    resolve: { page: PageResolver },
   }
 ];
 

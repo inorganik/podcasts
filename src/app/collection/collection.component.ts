@@ -31,6 +31,7 @@ export class CollectionComponent implements OnInit {
       }),
       map(pages => (pages.length) ? pages[0] : undefined),
       tap(page => this.seo.generatePodcastTags(page)),
+      tap(result => console.log('[collection] got result', result.title)),
     );
   }
 

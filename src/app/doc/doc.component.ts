@@ -23,6 +23,7 @@ export class DocComponent implements OnInit {
     const docPath = 'users/HODoi0MWLMNTUzON90aRukCvWur2/pages/mixes';
     this.page$ = this.afs.doc<PodcastPage>(docPath).valueChanges().pipe(
       tap(page => this.seo.generatePodcastTags(page)),
+      tap(result => console.log('[doc] got result', result.title)),
     );
   }
 

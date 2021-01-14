@@ -12,15 +12,18 @@ import { environment } from 'src/environments/environment.prod';
 import { DocComponent } from './doc/doc.component';
 import { CollectionComponent } from './collection/collection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageResolver } from './resolvers/page.resolver';
+import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    CollectionGroupComponent,
+    DocComponent,
     CollectionComponent,
-    DocComponent
+    CollectionGroupComponent,
+    PageViaResolverComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -29,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [PageResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

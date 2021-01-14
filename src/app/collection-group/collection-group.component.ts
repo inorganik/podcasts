@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { map, tap, switchMap, take } from 'rxjs/operators';
 import { PodcastPage } from '../models';
 import { SeoService } from '../services/seo.service';
 
@@ -26,11 +26,10 @@ export class CollectionGroupComponent implements OnInit {
       switchMap(params =>
         this.afs.collectionGroup<PodcastPage>('pages', ref =>
           ref.where('slug', '==', params.slug)
-        ).valueChanges().pipe(
-        )
+        ).valueChanges()
       ),
       map(pages => (pages.length) ? pages[0] : undefined),
-      tap(result => console.log('got result', result.title)), 
+      tap(result => console.log('[collection group] got result', result.title)), 
       tap(page => this.seo.generatePodcastTags(page)),
       take(2)
     );
