@@ -18,8 +18,8 @@ export class SeoService {
   constructor(private meta: Meta, private titleService: Title) { }
 
   generatePodcastTags(page: PodcastPage) {
-    const title = `${page.title} is on Podfan`;
-    const description = `Listen to and support ${page.title} on Podfan`;
+    const title = `${page.title} is on Podcasts11`;
+    const description = `Listen to and support ${page.title} on Podcasts11`;
     const tags: MetaTagData = {
       title,
       description,
@@ -34,13 +34,13 @@ export class SeoService {
 
   generateTags(metaTags: MetaTagData) {
     const tags: MetaTagData = {
-      image: 'https://pod.fan/assets/img/podfan-preview.jpg',
+      image: 'https://inorganik.net/_assets/inorganik-produce-preview.png',
       slug: '',
       ...metaTags
     };
     const defaultDesc = 'This is a test description';
     tags.description = (metaTags.description) ? metaTags.description : defaultDesc;
-    tags.title = `Podfan • ${tags.title}`;
+    tags.title = `Podcasts11 • ${tags.title}`;
     this.setTags(tags);
   }
 
@@ -55,7 +55,7 @@ export class SeoService {
     }
     this.meta.updateTag({ name: 'description', content: tags.description });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:site_name', content: 'Podfan' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Podcasts11' });
     this.meta.updateTag({ property: 'og:title', content: tags.title });
     this.meta.updateTag({ property: 'og:description', content: tags.description });
     this.meta.updateTag({ property: 'og:image', content: tags.image });
