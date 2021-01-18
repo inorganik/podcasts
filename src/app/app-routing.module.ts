@@ -7,6 +7,7 @@ import { DocComponent } from './doc/doc.component';
 import { HomeComponent } from './home/home.component';
 import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.component';
 import { PageResolver } from './resolvers/page.resolver';
+import { WithTransferStateComponent } from './with-transfer-state/with-transfer-state.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,11 @@ const routes: Routes = [
     path: 'resolver/:slug',
     component: PageViaResolverComponent,
     resolve: { page: PageResolver },
-  }
+  },
+  {
+    path: 'with-transfer-state/:slug',
+    component: WithTransferStateComponent,
+  },
 ];
 
 @NgModule({

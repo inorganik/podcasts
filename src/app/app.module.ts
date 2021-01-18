@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { CollectionComponent } from './collection/collection.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageResolver } from './resolvers/page.resolver';
 import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.component';
+import { WithTransferStateComponent } from './with-transfer-state/with-transfer-state.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.
     CollectionComponent,
     CollectionGroupComponent,
     PageViaResolverComponent,
+    WithTransferStateComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -31,6 +33,7 @@ import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    BrowserTransferStateModule,
   ],
   providers: [PageResolver],
   bootstrap: [AppComponent]
