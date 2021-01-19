@@ -29,7 +29,7 @@ export class CollectionGroupComponent implements OnInit {
         ).valueChanges()
       ),
       map(pages => (pages.length) ? pages[0] : undefined),
-      tap(result => console.log('[collection group] got result', result.title)), 
+      tap(result => console.log('[collection group] got result', result.title)),
       tap(page => this.seo.generatePodcastTags(page)),
     );
   }

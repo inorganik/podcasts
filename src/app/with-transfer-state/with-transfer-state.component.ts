@@ -22,7 +22,7 @@ export class WithTransferStateComponent implements OnInit {
       switchMap(params => this.pageService.page(params.slug).pipe(
         tap(page => this.pageService.pageBS.next(page))
       )),
-      tap(result => console.log('[with transfer state] got result', result.title)), 
+      tap(result => console.log('[with transfer state] got result', result.title)),
       tap(page => this.seo.generatePodcastTags(page)),
       take(2)
     ).subscribe();

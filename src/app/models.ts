@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 export interface SocialLinks {
   twitter?: string;
   instagram?: string;
