@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { PodcastPage } from '../models';
+import { switchMap, take, tap } from 'rxjs/operators';
 import { PageService } from '../services/page.service';
 import { SeoService } from '../services/seo.service';
 
@@ -13,20 +11,21 @@ import { SeoService } from '../services/seo.service';
 })
 export class WithTransferStateComponent implements OnInit {
 
-  page$: Observable<PodcastPage>;
-
   constructor(
     private route: ActivatedRoute,
-    private pageService: PageService,
+    public pageService: PageService,
     private seo: SeoService,
   ) { }
 
   ngOnInit(): void {
-    this.page$ = this.route.params.pipe(
-      switchMap(params => this.pageService.page(params.slug)),
+    this.route.params.pipe(
+      switchMap(params => this.pageService.page(params.slug).pipe(
+        tap(page => this.pageService.pageBS.next(page))
+      )),
       tap(result => console.log('[with transfer state] got result', result.title)), 
       tap(page => this.seo.generatePodcastTags(page)),
-    );
+      take(2)
+    ).subscribe();
   }
 
 }

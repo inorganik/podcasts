@@ -12,8 +12,8 @@ const pageStateKey = makeStateKey<PodcastPage>('podcastPage');
 })
 export class PageService {
 
-  // pageBS = new BehaviorSubject<PodcastPage>(null);
-  // page$ = this.pageBS.asObservable().pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  pageBS = new BehaviorSubject<PodcastPage>(null);
+  page$ = this.pageBS.asObservable().pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
   constructor(
     private transferState: TransferState,
