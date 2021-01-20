@@ -4,7 +4,6 @@ import { AboutComponent } from './about/about.component';
 import { CollectionGroupComponent } from './collection-group/collection-group.component';
 import { CollectionComponent } from './collection/collection.component';
 import { DocComponent } from './doc/doc.component';
-import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { PageViaResolverComponent } from './page-via-resolver/page-via-resolver.component';
 import { PageResolver } from './resolvers/page.resolver';

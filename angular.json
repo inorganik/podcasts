@@ -166,6 +166,7 @@
           "options": {
             "browserTarget": "podcasts11:build:production",
             "serverTarget": "podcasts11:server:production",
+            "guessRoutes": false,
             "routes": [
               "/",
               "/doc"
