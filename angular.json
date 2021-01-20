@@ -167,7 +167,8 @@
             "browserTarget": "podcasts11:build:production",
             "serverTarget": "podcasts11:server:production",
             "routes": [
-              "/"
+              "/",
+              "/doc"
             ]
           },
           "configurations": {
